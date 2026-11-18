@@ -136,7 +136,7 @@
     .contact .lead { color: #b8bfca; }
     form { background: #fff; color: var(--dark); border-radius: var(--radius); padding: 36px; display: grid; gap: 18px; }
     label { font-weight: 600; font-size: .92rem; display: grid; gap: 6px; }
-    input, select, textarea { font: inherit; padding: 12px 14px; border: 1.5px solid #d8dce3; border-radius: 10px; width: 100%; background: #fff; }
+    input, select, textarea { font: inherit; resize: vertical; padding: 12px 14px; border: 1.5px solid #d8dce3; border-radius: 10px; width: 100%; background: #fff; }
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(242,106,27,.2); }
     textarea { min-height: 120px; resize: vertical; }
     .form-msg { display: none; padding: 12px 16px; border-radius: 10px; background: #e8f7ee; color: #17663a; font-weight: 600; }
@@ -353,6 +353,9 @@
         <label>Nome
           <input type="text" name="nome" required autocomplete="name" placeholder="Seu nome completo">
         </label>
+        <label>E-mail
+          <input type="email" name="email" required autocomplete="email" placeholder="seu@email.com">
+        </label>
         <label>Empresa
           <input type="text" name="empresa" required autocomplete="organization" placeholder="Nome da empresa">
         </label>
@@ -365,6 +368,9 @@
             <option>Treinamento in-company</option>
             <option>Outro assunto</option>
           </select>
+        </label>
+        <label>Mensagem
+          <textarea name="mensagem" rows="5" required placeholder="Conte um pouco sobre o que você precisa"></textarea>
         </label>
         <button type="submit" class="btn">Enviar mensagem</button>
         <div class="form-msg" id="form-msg">Mensagem enviada! Entrarei em contato em breve.</div>
