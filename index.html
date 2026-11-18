@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prof. Paredes | Consultoria e Treinamentos em Soldagem</title>
+  <meta name="description" content="Consultoria de processos e projetos e treinamentos de soldagem (SMAW, GMAW, FCAW, GTAW), desenho técnico e medição industrial. Engenheiro de soldagem, ex-instrutor SENAI.">
+  <style>
+    :root {
+      --orange: #f26a1b;
+      --orange-dark: #c9500a;
+      --orange-soft: #fff1e8;
+      --dark: #14181f;
+      --dark-2: #1f2530;
+      --gray: #5b6472;
+      --light: #f6f7f9;
+      --white: #fff;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+    body { font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; color: var(--dark); line-height: 1.65; background: var(--white); overflow-x: hidden; width: 100%; }
+    .hero-grid > *, .about-grid > *, .contact-grid > *, .cards > *, .modes > * { min-width: 0; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 92%); margin-inline: auto; }
+    section { padding: 88px 0; }
+    h1, h2, h3 { line-height: 1.2; }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 14px; }
+    .eyebrow { display: inline-block; color: var(--orange); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: .8rem; margin-bottom: 10px; }
+    .lead { color: var(--gray); max-width: 680px; font-size: 1.08rem; }
+    .section-head { margin-bottom: 48px; }
+
+    .btn { display: inline-block; padding: 14px 30px; border-radius: 999px; font-weight: 700; border: 2px solid var(--orange); background: var(--orange); color: #fff; cursor: pointer; font-size: 1rem; transition: .2s; }
+    .btn:hover { background: var(--orange-dark); border-color: var(--orange-dark); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
+    .btn-outline:hover { background: #fff; color: var(--dark); border-color: #fff; }
+
+    /* Header */
+    header { position: fixed; inset: 0 0 auto 0; z-index: 50; background: rgba(20,24,31,.92); backdrop-filter: blur(8px); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { color: #fff; font-weight: 800; font-size: 1.3rem; letter-spacing: .02em; }
+    .logo span { color: var(--orange); }
+    .logo-br { display: none; }
+    nav ul { display: flex; gap: 28px; list-style: none; align-items: center; }
+    nav a { color: #d7dbe2; font-size: .95rem; font-weight: 500; }
+    nav a:hover { color: var(--orange); }
+    nav .btn { padding: 9px 20px; color: #fff; font-size: .9rem; }
+
+    /* Hero */
+    .hero { background: linear-gradient(135deg, rgba(20,24,31,.97) 40%, rgba(201,80,10,.9)), var(--dark); color: #fff; padding: 170px 0 110px; position: relative; overflow: hidden; }
+    .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(242,106,27,.45), transparent 70%); }
+    .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: center; position: relative; z-index: 1; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 20px; }
+    .hero h1 em { font-style: normal; color: var(--orange); }
+    .hero p { color: #d7dbe2; font-size: 1.15rem; max-width: 560px; margin-bottom: 32px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .photo { width: 100%; aspect-ratio: 1; max-width: 380px; margin-inline: auto; border-radius: 50%; border: 6px solid var(--orange); background: var(--dark-2) center/cover; display: grid; place-items: center; color: #8b93a1; text-align: center; font-size: .9rem; padding: 20px; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+    /* Para usar sua foto: adicione style="background-image:url('foto.jpg')" na div .photo e apague o texto dentro dela */
+
+    /* Stats */
+    .stats { background: var(--dark-2); color: #fff; padding: 40px 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+    .stat strong { display: block; font-size: 2rem; color: var(--orange); }
+    .stat span { color: #b8bfca; font-size: .92rem; }
+
+    /* Serviços */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 28px; }
+    .card { background: #fff; border: 1px solid #e6e9ee; border-radius: var(--radius); padding: 34px 30px; transition: .25s; border-top: 4px solid var(--orange); }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(20,24,31,.1); }
+    .icon { width: 54px; height: 54px; border-radius: 12px; background: var(--orange-soft); display: grid; place-items: center; font-size: 1.6rem; margin-bottom: 18px; }
+    .card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+    .card p { color: var(--gray); margin-bottom: 14px; }
+    .card ul { list-style: none; }
+    .card li { padding-left: 24px; position: relative; margin-bottom: 6px; font-size: .96rem; }
+    .card li::before { content: "▸"; color: var(--orange); position: absolute; left: 0; }
+    .tag { display: inline-block; font-size: .75rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; background: var(--orange-soft); color: var(--orange-dark); margin-bottom: 14px; }
+
+    /* Sobre */
+    .about { background: var(--light); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .about p { color: var(--gray); margin-bottom: 16px; }
+    .timeline-card { background: #fff; border-radius: var(--radius); padding: 40px 40px 44px; box-shadow: 0 14px 40px rgba(20,24,31,.08); border-top: 4px solid var(--orange); }
+    .timeline-card h3 { font-size: 1.2rem; margin-bottom: 30px; }
+    .timeline { list-style: none; position: relative; padding-left: 34px; }
+    .timeline::before { content: ""; position: absolute; left: 6px; top: 14px; bottom: 14px; width: 2px; background: linear-gradient(var(--orange), #f6c9ad); }
+    .timeline li { position: relative; padding: 16px 20px; margin-bottom: 14px; border-radius: 12px; background: var(--light); font-weight: 600; font-size: 1.05rem; line-height: 1.4; transition: .2s; }
+    .timeline li:last-child { margin-bottom: 0; }
+    .timeline li:hover { background: var(--orange-soft); transform: translateX(4px); }
+    .timeline li::before { content: ""; position: absolute; left: -34px; top: 50%; width: 14px; height: 14px; margin-top: -7px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 5px #fff; }
+    .timeline li::after { content: ""; position: absolute; left: -20px; top: 50%; width: 20px; height: 2px; background: #f6c9ad; }
+
+    /* Instagram */
+    .insta { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: #fff; text-align: center; position: relative; overflow: hidden; }
+    .insta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 80% 10%, rgba(255,255,255,.18), transparent 50%); }
+    .insta .container { position: relative; }
+    .insta-logo { width: 96px; height: 96px; margin: 0 auto 18px; filter: drop-shadow(0 8px 20px rgba(0,0,0,.25)); animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+    .insta h2 { margin-bottom: 10px; }
+    .insta .big { font-size: clamp(2.8rem, 12vw, 5rem); font-weight: 800; line-height: 1; margin: 10px 0; }
+    .insta p { max-width: 600px; margin: 0 auto 28px; opacity: .95; }
+    .insta .btn { background: #fff; color: #bc1888; border-color: #fff; display: inline-flex; align-items: center; gap: 10px; }
+    .insta .btn svg { width: 20px; height: 20px; }
+    .insta .btn:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
+
+    /* Clientes */
+    .clients { background: var(--light); overflow: hidden; padding: 56px 0; }
+    .clients .section-head { margin-bottom: 24px; }
+    .clients .section-head { text-align: center; }
+    .clients .lead { margin-inline: auto; }
+    .marquee { overflow: hidden; padding: 12px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .marquee-track { display: flex; width: max-content; animation: scroll-clients 32s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-group { display: flex; align-items: center; justify-content: space-around; gap: 22px; padding-right: 22px; min-width: 100vw; flex-shrink: 0; }
+    .client { flex: none; width: 164px; height: 164px; box-sizing: border-box; background: #fff; border: 2px solid #e6e9ee; border-radius: 50%; padding: 30px; overflow: hidden; display: flex; align-items: center; justify-content: center; transition: border-color .25s, box-shadow .25s; }
+    .client img { display: block; width: 100%; height: 100%; object-fit: contain; filter: grayscale(1); opacity: .75; transition: filter .25s, opacity .25s; }
+    .client:hover { box-shadow: 0 12px 28px rgba(242,106,27,.25); border-color: var(--orange); }
+    .client:hover img { filter: none; opacity: 1; }
+    @keyframes scroll-clients { to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; }
+      .marquee-group[aria-hidden="true"] { display: none; }
+      .marquee { -webkit-mask-image: none; mask-image: none; }
+    }
+
+    /* Atendimento */
+    .modes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 28px; }
+    .mode { background: var(--orange-soft); border-radius: var(--radius); padding: 30px; }
+    .mode h3 { margin-bottom: 8px; }
+    .mode p { color: var(--gray); }
+    .notice { margin-top: 30px; padding: 18px 24px; border-left: 4px solid var(--orange); background: var(--light); border-radius: 8px; color: var(--gray); }
+
+    /* Contato */
+    .contact { background: var(--dark); color: #fff; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; }
+    .contact .lead { color: #b8bfca; }
+    form { background: #fff; color: var(--dark); border-radius: var(--radius); padding: 36px; display: grid; gap: 18px; }
+    label { font-weight: 600; font-size: .92rem; display: grid; gap: 6px; }
+    input, select, textarea { font: inherit; padding: 12px 14px; border: 1.5px solid #d8dce3; border-radius: 10px; width: 100%; background: #fff; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(242,106,27,.2); }
+    textarea { min-height: 120px; resize: vertical; }
+    .form-msg { display: none; padding: 12px 16px; border-radius: 10px; background: #e8f7ee; color: #17663a; font-weight: 600; }
+
+    footer { background: #0c0f14; color: #8b93a1; text-align: center; padding: 28px 0; font-size: .9rem; }
+    footer a { color: var(--orange); }
+
+    @media (max-width: 380px) {
+      .logo { line-height: 1.05; font-size: 1.15rem; }
+      .logo-br { display: inline; }
+      .nav { height: 72px; }
+    }
+    @media (max-width: 860px) {
+      nav ul li:not(:last-child) { display: none; }
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+      .photo { max-width: 260px; }
+      .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stat strong { font-size: 1.35rem; overflow-wrap: anywhere; }
+      .hero p { font-size: 1.02rem; }
+      .hero::after { display: none; }
+      form { padding: 24px; }
+      .timeline-card { padding: 28px 22px 32px; }
+      .timeline li { padding: 14px 16px; font-size: 1rem; }
+      .hero-actions .btn { width: 100%; text-align: center; }
+      section { padding: 64px 0; }
+      .hero { padding-top: 130px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#topo" class="logo">PROF.<br class="logo-br"> <span>PAREDES</span></a>
+    <nav>
+      <ul>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#atendimento">Atendimento</a></li>
+        <li><a href="#instagram">Instagram</a></li>
+        <li><a href="#contato" class="btn">Fale comigo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="topo">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Engenheiro de Soldagem e Produção</span>
+        <h1>Consultoria e treinamentos que elevam a <em>qualidade da sua soldagem</em></h1>
+        <p>Mais de 11 anos formando profissionais no SENAI e preparando equipes para competições. Agora levo essa experiência para dentro da sua empresa.</p>
+        <div class="hero-actions">
+          <a href="#contato" class="btn">Solicitar contato</a>
+          <a href="#servicos" class="btn btn-outline">Conhecer serviços</a>
+        </div>
+      </div>
+      <div class="photo" role="img" aria-label="Fábio Paredes de Oliveira" style="background-image:url('img/fabio/fabio.jpg'); background-position: 50% 22%;"></div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS -->
+  <div class="stats">
+    <div class="container stats-grid">
+      <div class="stat"><strong>11 anos</strong><span>como instrutor no SENAI</span></div>
+      <div class="stat"><strong>250 mil+</strong><span>seguidores no Instagram</span></div>
+      <div class="stat"><strong>Pós-graduado</strong><span>em Engenharia de Soldagem</span></div>
+      <div class="stat"><strong>Competições</strong><span>competidor, treinador e avaliador</span></div>
+    </div>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">O que eu faço</span>
+        <h2>Soluções para a sua indústria</h2>
+        <p class="lead">Do diagnóstico de processos ao treinamento prático da sua equipe, com foco em resultado, segurança e qualidade.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <span class="tag">In-company ou remoto</span>
+          <h3>Consultoria de processos e projetos</h3>
+          <p>Análise e melhoria dos seus processos produtivos e de soldagem, com visão de engenharia e de chão de fábrica.</p>
+          <ul>
+            <li>Diagnóstico e melhoria de processos</li>
+            <li>Análise de projetos e procedimentos</li>
+            <li>Redução de custos e retrabalho</li>
+            <li>Controle de qualidade</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tag">Presencial in-company</span>
+          <h3>Treinamento prático de soldagem</h3>
+          <p>Capacitação da sua equipe diretamente na sua empresa, com teoria e prática nos principais processos.</p>
+          <ul>
+            <li>SMAW – Eletrodo revestido</li>
+            <li>GMAW – MIG/MAG</li>
+            <li>FCAW – Arame tubular</li>
+            <li>GTAW – TIG</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tag">Remoto</span>
+          <h3>Treinamentos online</h3>
+          <p>Aulas ao vivo para equipes e profissionais, onde quer que estejam.</p>
+          <ul>
+            <li>Desenho técnico</li>
+            <li>Soldagem (teoria)</li>
+            <li>Medição industrial</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="about">
+    <div class="container about-grid">
+      <div>
+        <span class="eyebrow">Quem sou eu</span>
+        <h2>Fábio Paredes de Oliveira</h2>
+        <p>Engenheiro de Produção com pós-graduação em Engenharia de Soldagem. Por 11 anos fui instrutor de mecânica, soldagem e automação no SENAI, onde também coordenei o laboratório FabLab.</p>
+        <p>Participei de competições de soldagem, treinei alunos para competir e atuei como avaliador. Essa vivência une a precisão técnica das competições à realidade da indústria.</p>
+        <p>Minha trajetória também inclui projetos de moldes de injeção, automação e mecatrônica, o que me permite enxergar o processo como um todo.</p>
+      </div>
+      <div class="timeline-card">
+        <ul class="timeline">
+        <li><strong>Engenheiro de Produção</strong></li>
+        <li><strong>Instrutor de mecânica, soldagem e automação</strong></li>
+        <li><strong>Técnico em Mecatrônica</strong></li>
+        <li><strong>Pós-graduado em Engenharia de Soldagem</strong></li>
+        <li><strong>Técnico em Segurança do Trabalho</strong></li>
+      </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section id="instagram" class="insta">
+    <div class="container">
+      <div style="margin-bottom:6px"><svg class="insta-logo" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.4" cy="6.6" r="1.1" fill="#fff" stroke="none"/></svg></div>
+      <span class="eyebrow" style="color:#fff">Comunidade</span>
+      <div class="big">250 mil+</div>
+      <h2>seguidores no Instagram</h2>
+      <p>Conteúdo diário sobre soldagem, dicas práticas e bastidores da profissão.</p>
+      <a class="btn" href="https://instagram.com/prof.paredes" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>Seguir @prof.paredes</a>
+    </div>
+  </section>
+
+  <!-- ATENDIMENTO -->
+  <section id="atendimento">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Como atendo</span>
+        <h2>Presencial ou remoto</h2>
+        <p class="lead">Atendimento em todo o Brasil, com a modalidade que fizer mais sentido para a sua necessidade.</p>
+      </div>
+      <div class="modes">
+        <div class="mode"><h3>📍 Presencial</h3><p>Base em Curitiba – PR. Treinamentos e consultorias in-company na sua planta.</p></div>
+        <div class="mode"><h3>🌐 Remoto</h3><p>Consultorias e treinamentos online, sem custos de deslocamento.</p></div>
+      </div>
+      <p class="notice"><strong>Atenção:</strong> para atendimentos presenciais fora do estado do Paraná, os custos de translado e hospedagem são por conta do contratante.</p>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section id="clientes" class="clients">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Quem confia</span>
+        <h2>Empresas e instituições atendidas</h2>
+      </div>
+    </div>
+    <div class="marquee">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <div class="client"><img src="img/clients/la_petite.jpg" alt="La Petite Maison Écologique" loading="lazy"></div>
+          <div class="client"><img src="img/clients/polo_maker.png" alt="Polo Maker" loading="lazy"></div>
+          <div class="client"><img src="img/clients/brastoni.jpeg" alt="Brastoni Indústrias" loading="lazy"></div>
+          <div class="client"><img src="img/clients/uerj.png" alt="UERJ" loading="lazy"></div>
+          <div class="client"><img src="img/clients/ambev.png" alt="Ambev" loading="lazy"></div>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <div class="client"><img src="img/clients/la_petite.jpg" alt="" loading="lazy"></div>
+          <div class="client"><img src="img/clients/polo_maker.png" alt="" loading="lazy"></div>
+          <div class="client"><img src="img/clients/brastoni.jpeg" alt="" loading="lazy"></div>
+          <div class="client"><img src="img/clients/uerj.png" alt="" loading="lazy"></div>
+          <div class="client"><img src="img/clients/ambev.png" alt="" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="contact">
+    <div class="container contact-grid">
+      <div>
+        <span class="eyebrow">Contato</span>
+        <h2>Vamos conversar sobre o seu projeto?</h2>
+        <p class="lead">Preencha o formulário com seu nome, o assunto e a sua empresa. Retorno o mais breve possível.</p>
+      </div>
+
+      <!-- Web3Forms: troque SUA_CHAVE_AQUI pela Access Key criada em web3forms.com -->
+      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="50629702-a753-479a-8392-10c45775a2e0">
+        <input type="hidden" name="subject" value="Novo contato pelo site Prof. Paredes">
+        <input type="hidden" name="from_name" value="Site Prof. Paredes">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+        <label>Nome
+          <input type="text" name="nome" required autocomplete="name" placeholder="Seu nome completo">
+        </label>
+        <label>Empresa
+          <input type="text" name="empresa" required autocomplete="organization" placeholder="Nome da empresa">
+        </label>
+        <label>Assunto
+          <select name="assunto" required>
+            <option value="">Selecione…</option>
+            <option>Consultoria remota</option>
+            <option>Consultoria in-company</option>
+            <option>Treinamento remoto</option>
+            <option>Treinamento in-company</option>
+            <option>Outro assunto</option>
+          </select>
+        </label>
+        <button type="submit" class="btn">Enviar mensagem</button>
+        <div class="form-msg" id="form-msg">Mensagem enviada! Entrarei em contato em breve.</div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © <span id="year"></span> Prof. Paredes · Curitiba – PR ·
+    <a href="https://instagram.com/prof.paredes" target="_blank" rel="noopener">@prof.paredes</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const msg = document.getElementById('form-msg');
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error();
+      msg.textContent = 'Mensagem enviada! Entrarei em contato em breve.';
+      msg.style.background = '#e8f7ee'; msg.style.color = '#17663a';
+      form.reset();
+    } catch {
+      msg.textContent = 'Não foi possível enviar. Tente novamente em instantes.';
+      msg.style.background = '#fdeaea'; msg.style.color = '#a12626';
+    }
+    msg.style.display = 'block';
+  });
+</script>
+</body>
+</html>
